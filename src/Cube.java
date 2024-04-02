@@ -22,73 +22,58 @@ public class Cube {
 
 
 
-    public void moveLayer(char layer) {
+    public void rotateLayer(char layer, char direction) {
     }
+
+
+
     public void rotateCube(char axis) {
     }
 
 
 
 
-    public void moveLayerTop() {
-        moveLayer('U');
+    public void rotateUpperLayer(char direction) {
+        rotateLayer('U', direction);
     }
-
-    public void moveLayerMiddleHorizontal() {
-        moveLayer('U');
-        moveLayer('D');
-    }
-
-    public void moveLayerBottom() {
-        moveLayer('D');
+    public void rotateBottomLayer(char direction) {
+        rotateLayer('D', direction);
     }
 
 
 
-    public void moveLayerFront() {
-        moveLayer('F');
+    public void rotateFrontLayer(char direction) {
+        rotateLayer('F', direction);
     }
-
-    public void moveLayerMiddleVertical() {
-        moveLayer('F');
-        moveLayer('B');
-    }
-
-    public void moveLayerBack() {
-        moveLayer('B');
+    public void rotateBackLayer(char direction) {
+        rotateLayer('B', direction);
     }
 
 
 
-    public void moveLayerLeft() {
-        moveLayer('L');
+    public void rotateLeftLayer(char direction) {
+        rotateLayer('L', direction);
+    }
+    public void rotateRightLayer(char direction) {
+        rotateLayer('R', direction);
     }
 
-    public void moveLayerVertical2() {
-        moveLayer('L');
-        moveLayer('R');
-    }
-
-    public void moveLayerRight() {
-        moveLayer('R');
-    }
 
 
 
     public void rotateCubeX() {
         rotateCube('x');
     }
-
     public void rotateCubeY() {
         rotateCube('y');
     }
-
     public void rotateCubeZ() {
         rotateCube('z');
     }
 
 
-    public void outputSide(String side) {
+
+    public void showSide(String side) {
         switch (side) {
             case "right":
                 System.out.println(Arrays.deepToString(sideRight));
@@ -113,13 +98,13 @@ public class Cube {
     }
 
 
-    public void outputCurrentState() {
-        outputSide("right");
-        outputSide("left");
-        outputSide("up");
-        outputSide("down");
-        outputSide("front");
-        outputSide("back");
+    public void showAllSides() {
+        showSide("right");
+        showSide("left");
+        showSide("up");
+        showSide("down");
+        showSide("front");
+        showSide("back");
     }
 
 

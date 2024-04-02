@@ -12,7 +12,10 @@ public class Main {
 
         Cube cube1 = new Cube(side1, side2, side3, side4, side5, side6);
 
-        cube1.outputCurrentState();
+
+        cube1.rotateRightLayer('r');
+
+        cube1.showAllSides();
 
     }
 }
