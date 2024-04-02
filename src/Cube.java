@@ -342,6 +342,41 @@ public class Cube {
     }
 
 
+    public void printCube() {
+
+        // print top side
+        for (int i = 0; i < 3; i++) {
+            System.out.print("        ");
+            System.out.println(sideUp[i][0] + " " + sideUp[i][1] + " " + sideUp[i][2]);
+        }
+
+        System.out.println();
+
+        // print left, front and right side
+        for (int i = 0; i < 3; i++) {
+            System.out.print(sideLeft[i][0] + " " + sideLeft[i][1] + " " + sideLeft[i][2] + "   ");
+            System.out.print(sideFront[i][0] + " " + sideFront[i][1] + " " + sideFront[i][2] + "   ");
+            System.out.println(sideRight[i][0] + " " + sideRight[i][1] + " " + sideRight[i][2]);
+        }
+
+        System.out.println();
+
+        // print bottom side
+        for (int i = 0; i < 3; i++) {
+            System.out.print("        ");
+            System.out.println(sideDown[i][0] + " " + sideDown[i][1] + " " + sideDown[i][2]);
+        }
+
+        System.out.println();
+
+        // print back side
+        for (int i = 2; i >= 0; i--) {
+            System.out.print("        ");
+            System.out.println(sideBack[i][0] + " " + sideBack[i][1] + " " + sideBack[i][2]);
+        }
+    }
+
+
     public void showAllSides() {
         showSide("right");
         showSide("left");
