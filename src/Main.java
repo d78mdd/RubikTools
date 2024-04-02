@@ -12,8 +12,11 @@ public class Main {
 
         Cube cube1 = new Cube(side1, side2, side3, side4, side5, side6);
 
+        cube1.showAllSides();
+        System.out.println();
 
         cube1.rotateRightLayer('r');
+        cube1.
 
         cube1.showAllSides();
 

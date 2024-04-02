@@ -2,6 +2,8 @@ import java.util.Arrays;
 
 public class Cube {
 
+    // sides (faces) with 9 pieces each
+    // assuming classic Rubik's cube 3x3 with flat single-colored pieces
     private char[][] sideRight = new char[3][3];
     private char[][] sideLeft = new char[3][3];
     private char[][] sideUp = new char[3][3];
@@ -11,19 +13,196 @@ public class Cube {
 
 
     public Cube(char[][] sideRight, char[][] sideLeft, char[][] sideUp, char[][] sideDown, char[][] sideFront, char[][] sideBack) {
-        this.sideRight = sideRight;
-        this.sideLeft = sideLeft;
-        this.sideUp = sideUp;
-        this.sideDown = sideDown;
-        this.sideFront = sideFront;
-        this.sideBack = sideBack;
+        this.sideRight = copy(sideRight);
+        this.sideLeft = copy(sideLeft);
+        this.sideUp = copy(sideUp);
+        this.sideDown = copy(sideDown);
+        this.sideFront = copy(sideFront);
+        this.sideBack = copy(sideBack);
     }
 
 
 
 
-    public void rotateLayer(char layer, char direction) {
+    private void rotateLayer(char layer, char direction) {
+
+        // part 1/2 - rotate the face/side
+
+        char[][] sideToRotate = new char[3][3];
+        char[][] newSideState = new char[3][3];
+
+        // determine side (9 pieces) to rotate
+        switch(layer)
+        {
+            case 'R':
+                System.out.println("rotating right layer");
+                sideToRotate = copy(sideRight);
+                break;
+            case 'L':
+                System.out.println("rotating right layer");
+                sideToRotate = copy(sideLeft);
+                break;
+            case 'U':
+                System.out.println("rotating right layer");
+                sideToRotate = copy(sideUp);
+                break;
+            case 'D':
+                System.out.println("rotating right layer");
+                sideToRotate = copy(sideDown);
+                break;
+            case 'F':
+                System.out.println("rotating right layer");
+                sideToRotate = copy(sideFront);
+                break;
+            case 'B':
+                System.out.println("rotating right layer");
+                sideToRotate = copy(sideBack);
+                break;
+        }
+
+        // rotate the 9 pieces 1by1
+        // direction = right (clockwise)
+        newSideState[0][0] = sideToRotate[0][2];
+        newSideState[0][1] = sideToRotate[1][2];
+        newSideState[0][2] = sideToRotate[2][2];
+        newSideState[1][0] = sideToRotate[0][1];
+        //// middle piece ([1][1]) never changes
+        newSideState[1][2] = sideToRotate[2][1];
+        newSideState[2][0] = sideToRotate[0][0];
+        newSideState[2][1] = sideToRotate[1][0];
+        newSideState[2][2] = sideToRotate[2][0];
+        // assign the new state to the appropriate side
+        switch(layer)
+        {
+            case 'R':
+                sideRight = copy(newSideState);
+                break;
+            case 'L':
+                sideLeft = copy(newSideState);
+                break;
+            case 'U':
+                sideUp = copy(newSideState);
+                break;
+            case 'D':
+                sideDown = copy(newSideState);
+                break;
+            case 'F':
+                sideFront = copy(newSideState);
+                break;
+            case 'B':
+                sideBack = copy(newSideState);
+                break;
+        }
+
+
+
+        // Part 2/2 : swap the 4 sets of 3 pieces "around" this side/face:
+
+        //the 4 sides whose 3 pieces will swap
+        char[][] side1ToSwap = new char[3][3];
+        char[][] side2ToSwap = new char[3][3];
+        char[][] side3ToSwap = new char[3][3];
+        char[][] side4ToSwap = new char[3][3];
+        // determine position of swap
+        // direction = right (clockwise)
+        switch(layer)
+        {
+            case 'R':
+                side1ToSwap = copy(sideUp);
+                side2ToSwap = copy(sideBack);
+                side3ToSwap = copy(sideDown);
+                side4ToSwap = copy(sideFront);
+                break;
+            case 'L':
+                side1ToSwap = copy(sideUp);
+                side2ToSwap = copy(sideFront);
+                side3ToSwap = copy(sideDown);
+                side4ToSwap = copy(sideBack);
+                break;
+            case 'U':
+                side1ToSwap = copy(sideBack);
+                side2ToSwap = copy(sideRight);
+                side3ToSwap = copy(sideFront);
+                side4ToSwap = copy(sideLeft);
+                break;
+            case 'D':
+                side1ToSwap = copy(sideFront);
+                side2ToSwap = copy(sideRight);
+                side3ToSwap = copy(sideBack);
+                side4ToSwap = copy(sideLeft);
+                break;
+            case 'F':
+                side1ToSwap = copy(sideUp);
+                side2ToSwap = copy(sideRight);
+                side3ToSwap = copy(sideDown);
+                side4ToSwap = copy(sideLeft);
+                break;
+            case 'B':
+                side1ToSwap = copy(sideUp);
+                side2ToSwap = copy(sideLeft);
+                side3ToSwap = copy(sideDown);
+                side4ToSwap = copy(sideRight);
+                break;
+        }
+        // swap
+        char[][] newSide1State = copy(side1ToSwap);
+        newSide1State[2][0] = side4ToSwap[0][2];
+        newSide1State[2][1] = side4ToSwap[1][2];
+        newSide1State[2][2] = side4ToSwap[2][2];
+        char[][] newSide2State = copy(side2ToSwap);
+        newSide2State[0][0] = side1ToSwap[2][0];
+        newSide2State[1][0] = side1ToSwap[2][1];
+        newSide2State[2][0] = side1ToSwap[2][2];
+        char[][] newSide3State = copy(side3ToSwap);
+        newSide3State[0][0] = side2ToSwap[0][0];
+        newSide3State[0][1] = side2ToSwap[1][0];
+        newSide3State[0][2] = side2ToSwap[2][0];
+        char[][] newSide4State = copy(side4ToSwap);
+        newSide4State[0][2] = side3ToSwap[0][0];
+        newSide4State[1][2] = side3ToSwap[0][1];
+        newSide4State[2][2] = side4ToSwap[0][2];
+        // assign the new states to the appropriate sides
+        switch(layer)
+        {
+            case 'R':
+                sideUp = copy(newSide1State);
+                sideBack = copy(newSide2State);
+                sideDown = copy(newSide3State);
+                sideFront = copy(newSide4State);
+                break;
+            case 'L':
+                sideUp = copy(newSide1State);
+                sideFront = copy(newSide2State);
+                sideDown = copy(newSide3State);
+                sideBack = copy(newSide4State);
+                break;
+            case 'U':
+                sideBack = copy(newSide1State);
+                sideRight = copy(newSide2State);
+                sideFront = copy(newSide3State);
+                sideLeft = copy(newSide4State);
+                break;
+            case 'D':
+                sideFront = copy(newSide1State);
+                sideRight = copy(newSide2State);
+                sideBack = copy(newSide3State);
+                sideLeft = copy(newSide4State);
+                break;
+            case 'F':
+                sideUp = copy(newSide1State);
+                sideRight = copy(newSide2State);
+                sideDown = copy(newSide3State);
+                sideLeft = copy(newSide4State);
+                break;
+            case 'B':
+                sideUp = copy(newSide1State);
+                sideLeft = copy(newSide2State);
+                sideDown = copy(newSide3State);
+                sideRight = copy(newSide4State);
+                break;
+        }
     }
+
 
 
 
@@ -33,30 +212,95 @@ public class Cube {
 
 
 
-    public void rotateUpperLayer(char direction) {
+    private void rotateUpperLayer(char direction) {
         rotateLayer('U', direction);
     }
-    public void rotateBottomLayer(char direction) {
+    private void rotateBottomLayer(char direction) {
         rotateLayer('D', direction);
     }
 
 
 
-    public void rotateFrontLayer(char direction) {
+    private void rotateFrontLayer(char direction) {
         rotateLayer('F', direction);
     }
-    public void rotateBackLayer(char direction) {
+    private void rotateBackLayer(char direction) {
         rotateLayer('B', direction);
     }
 
 
 
-    public void rotateLeftLayer(char direction) {
+    private void rotateLeftLayer(char direction) {
         rotateLayer('L', direction);
     }
-    public void rotateRightLayer(char direction) {
+    private void rotateRightLayer(char direction) {
         rotateLayer('R', direction);
     }
+
+
+    // shortened method names for each movement
+    // according to https://rubik.bg/bg/content/10-formuli-za-podrezhdane-na-rubik-kub
+    public void R()
+    {
+        rotateRightLayer('r');
+    }
+    public void Ri()
+    {
+        rotateRightLayer('r');
+        rotateRightLayer('r');
+        rotateRightLayer('r');
+    }
+    public void L()
+    {
+        rotateLeftLayer('r');
+    }
+    public void Li()
+    {
+        rotateLeftLayer('r');
+        rotateLeftLayer('r');
+        rotateLeftLayer('r');
+    }
+    public void B()
+    {
+        rotateBackLayer('r');
+    }
+    public void Bi()
+    {
+        rotateBackLayer('r');
+        rotateBackLayer('r');
+        rotateBackLayer('r');
+    }
+    public void D()
+    {
+        rotateBottomLayer('r');
+    }
+    public void Di()
+    {
+        rotateBottomLayer('r');
+        rotateBottomLayer('r');
+        rotateBottomLayer('r');
+    }
+    public void F()
+    {
+        rotateFrontLayer('r');
+    }
+    public void Fi()
+    {
+        rotateFrontLayer('r');
+        rotateFrontLayer('r');
+        rotateFrontLayer('r');
+    }
+    public void U()
+    {
+        rotateUpperLayer('r');
+    }
+    public void Ui()
+    {
+        rotateUpperLayer('r');
+        rotateUpperLayer('r');
+        rotateUpperLayer('r');
+    }
+
 
 
 
@@ -125,6 +369,13 @@ public class Cube {
         solveLayer1();
         solveLayer2();
         solveLayer3();
+    }
+
+
+
+
+    private static char[][] copy(char[][] arr) {
+        return Arrays.stream(arr).map(char[]::clone).toArray(char[][]::new);
     }
 
 
