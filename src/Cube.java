@@ -2,15 +2,15 @@ import java.util.Arrays;
 
 public class Cube {
 
-    private int[][] sideRight = new int[3][3];
-    private int[][] sideLeft = new int[3][3];
-    private int[][] sideUp = new int[3][3];
-    private int[][] sideDown = new int[3][3];
-    private int[][] sideFront = new int[3][3];
-    private int[][] sideBack = new int[3][3];
+    private char[][] sideRight = new char[3][3];
+    private char[][] sideLeft = new char[3][3];
+    private char[][] sideUp = new char[3][3];
+    private char[][] sideDown = new char[3][3];
+    private char[][] sideFront = new char[3][3];
+    private char[][] sideBack = new char[3][3];
 
 
-    public Cube(int[][] sideRight, int[][] sideLeft, int[][] sideUp, int[][] sideDown, int[][] sideFront, int[][] sideBack) {
+    public Cube(char[][] sideRight, char[][] sideLeft, char[][] sideUp, char[][] sideDown, char[][] sideFront, char[][] sideBack) {
         this.sideRight = sideRight;
         this.sideLeft = sideLeft;
         this.sideUp = sideUp;
