@@ -160,7 +160,7 @@ public class Cube {
         char[][] newSide4State = copy(side4ToSwap);
         newSide4State[0][2] = side3ToSwap[0][0];
         newSide4State[1][2] = side3ToSwap[0][1];
-        newSide4State[2][2] = side4ToSwap[0][2];
+        newSide4State[2][2] = side3ToSwap[0][2];
         // assign the new states to the appropriate sides
         switch(layer)
         {
@@ -373,6 +373,43 @@ public class Cube {
         for (int i = 2; i >= 0; i--) {
             System.out.print("        ");
             System.out.println(sideBack[i][0] + " " + sideBack[i][1] + " " + sideBack[i][2]);
+        }
+    }
+
+    public void printFrontSide()
+    {
+        for (int i = 0; i < 3; i++) {
+            System.out.println(sideFront[i][0] + " " + sideFront[i][1] + " " + sideFront[i][2]);
+        }
+    }
+    public void printBackSide()
+    {
+        for (int i = 0; i < 3; i++) {
+            System.out.println(sideBack[i][0] + " " + sideBack[i][1] + " " + sideBack[i][2]);
+        }
+    }
+    public void printRightSide()
+    {
+        for (int i = 0; i < 3; i++) {
+            System.out.println(sideRight[i][0] + " " + sideRight[i][1] + " " + sideRight[i][2]);
+        }
+    }
+    public void printLeftSide()
+    {
+        for (int i = 0; i < 3; i++) {
+            System.out.println(sideLeft[i][0] + " " + sideLeft[i][1] + " " + sideLeft[i][2]);
+        }
+    }
+    public void printTopSide()
+    {
+        for (int i = 0; i < 3; i++) {
+            System.out.println(sideUp[i][0] + " " + sideUp[i][1] + " " + sideUp[i][2]);
+        }
+    }
+    public void printBottomSide()
+    {
+        for (int i = 0; i < 3; i++) {
+            System.out.println(sideDown[i][0] + " " + sideDown[i][1] + " " + sideDown[i][2]);
         }
     }
 
