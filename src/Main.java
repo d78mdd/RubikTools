@@ -15,8 +15,7 @@ public class Main {
         cube1.showAllSides();
         System.out.println();
 
-        cube1.rotateRightLayer('r');
-        cube1.
+        cube1.R();
 
         cube1.showAllSides();
 

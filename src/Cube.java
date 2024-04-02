@@ -66,7 +66,7 @@ public class Cube {
         newSideState[0][1] = sideToRotate[1][2];
         newSideState[0][2] = sideToRotate[2][2];
         newSideState[1][0] = sideToRotate[0][1];
-        //// middle piece ([1][1]) never changes
+        newSideState[1][1] = sideToRotate[1][1]; //// middle piece ([1][1]) never changes
         newSideState[1][2] = sideToRotate[2][1];
         newSideState[2][0] = sideToRotate[0][0];
         newSideState[2][1] = sideToRotate[1][0];
