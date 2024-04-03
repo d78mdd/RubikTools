@@ -1,6 +1,3 @@
-package src;
-
-import src.Cube;
 
 public class Main {
 
