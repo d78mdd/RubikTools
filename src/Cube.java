@@ -31,69 +31,33 @@ public class Cube {
 
         // part 1/2 - rotate the face/side
 
-        char[][] sideToRotate = new char[3][3];
-        char[][] newSideState = new char[3][3];
-
-        // determine side (9 pieces) to rotate
-        switch(layer)
-        {
-            case 'R':
-                System.out.println("rotating right layer");
-                sideToRotate = copy(sideRight);
-                break;
-            case 'L':
-                System.out.println("rotating left layer");
-                sideToRotate = copy(sideLeft);
-                break;
-            case 'U':
-                System.out.println("rotating up layer");
-                sideToRotate = copy(sideUp);
-                break;
-            case 'D':
-                System.out.println("rotating down layer");
-                sideToRotate = copy(sideDown);
-                break;
-            case 'F':
-                System.out.println("rotating front layer");
-                sideToRotate = copy(sideFront);
-                break;
-            case 'B':
-                System.out.println("rotating back layer");
-                sideToRotate = copy(sideBack);
-                break;
-        }
-
-        // rotate the 9 pieces 1by1
-        // direction = right (clockwise)
-        newSideState[0][0] = sideToRotate[0][2];
-        newSideState[0][1] = sideToRotate[1][2];
-        newSideState[0][2] = sideToRotate[2][2];
-        newSideState[1][0] = sideToRotate[0][1];
-        newSideState[1][1] = sideToRotate[1][1]; //// middle piece ([1][1]) never changes
-        newSideState[1][2] = sideToRotate[2][1];
-        newSideState[2][0] = sideToRotate[0][0];
-        newSideState[2][1] = sideToRotate[1][0];
-        newSideState[2][2] = sideToRotate[2][0];
+        // determine side (9 pieces) to rotate and
         // assign the new state to the appropriate side
         switch(layer)
         {
             case 'R':
-                sideRight = copy(newSideState);
+                System.out.println("rotating right layer");
+                sideRight = rotateC(sideRight);
                 break;
             case 'L':
-                sideLeft = copy(newSideState);
+                System.out.println("rotating left layer");
+                sideLeft = rotateC(sideLeft);
                 break;
             case 'U':
-                sideUp = copy(newSideState);
+                System.out.println("rotating up layer");
+                sideUp = rotateC(sideUp);
                 break;
             case 'D':
-                sideDown = copy(newSideState);
+                System.out.println("rotating down layer");
+                sideDown = rotateC(sideDown);
                 break;
             case 'F':
-                sideFront = copy(newSideState);
+                System.out.println("rotating front layer");
+                sideFront = rotateC(sideFront);
                 break;
             case 'B':
-                sideBack = copy(newSideState);
+                System.out.println("rotating back layer");
+                sideBack = rotateC(sideBack);
                 break;
         }
 
@@ -259,7 +223,7 @@ public class Cube {
      * for internal use with method for rotating a physical 3x3x1 layer's 4 sets of 3 "attached" pieces or method for rotating the entire cube in 3D space
      * analogous to re-sticking a face's 9 stickers
      * @param side the face/side (9 pieces) to be rotated
-     * @return the rotated face/side - clockwise 90 degree
+     * @return a new rotated face/side - clockwise 90 degree
      */
     private char[][] rotateC(char[][] side) {
         return new char[][]{
@@ -273,7 +237,7 @@ public class Cube {
      * for internal use with method for rotating a physical 3x3x1 layer's 4 sets of 3 "attached" pieces or method for rotating the entire cube in 3D space
      * analogous to re-sticking a face's 9 stickers
      * @param side the face/side (9 pieces) to be rotated
-     * @return the rotated face/side - anti-clockwise 90 degree
+     * @return a new rotated face/side - anti-clockwise 90 degree
      */
     private char[][] rotateAC(char[][] side) {
         return rotateC(rotateC(rotateC(side)));
@@ -282,7 +246,7 @@ public class Cube {
     /**
      * for internal use with rotating the cube in 3D or rotating a 3x3x1 outer layer
      * @param side the face/side (9 pieces) to be rotated
-     * @return the rotated face/side 180 degree
+     * @return a new rotated face/side 180 degree
      */
     private char[][] mirror(char[][] side) {
         return rotateC(rotateC(side));
