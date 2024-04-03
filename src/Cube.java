@@ -4,12 +4,12 @@ public class Cube {
 
     // sides (faces) with 9 pieces each
     // assuming classic Rubik's cube 3x3 with flat single-colored pieces
-    private char[][] sideRight = new char[3][3];
-    private char[][] sideLeft = new char[3][3];
-    private char[][] sideUp = new char[3][3];
-    private char[][] sideDown = new char[3][3];
-    private char[][] sideFront = new char[3][3];
-    private char[][] sideBack = new char[3][3];
+    private char[][] sideRight;
+    private char[][] sideLeft;
+    private char[][] sideUp;
+    private char[][] sideDown;
+    private char[][] sideFront;
+    private char[][] sideBack;
 
 
     public Cube(char[][] sideRight, char[][] sideLeft, char[][] sideUp, char[][] sideDown, char[][] sideFront, char[][] sideBack) {
@@ -74,7 +74,7 @@ public class Cube {
     // https://ruwix.com/the-rubiks-cube/notation/
     private void rotateCube(char axis) {
 
-        char[][] tempSide = new char[3][3];
+        char[][] tempSide;
 
         switch (axis)
         {
