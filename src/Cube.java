@@ -22,95 +22,31 @@ public class Cube {
     }
 
 
-    /**
-     * rotate a physical outer 3x3x1 layer clockwise
-     * @param layer f b r l u d
-     * @param direction not implemented yet; direction is always 90 degree clockwise
-     */
-    private void rotateLayer(char layer, char direction) {
+
+    private void rotateFrontFacingLayer(char direction) {
 
         // part 1/2 - rotate the face/side
 
         // determine side (9 pieces) to rotate and
         // assign the new state to the appropriate side
-        switch(layer)
-        {
-            case 'R':
-                System.out.println("rotating right face clockwise");
-                sideRight = rotateC(sideRight);
-                break;
-            case 'L':
-                System.out.println("rotating left face clockwise");
-                sideLeft = rotateC(sideLeft);
-                break;
-            case 'U':
-                System.out.println("rotating up face clockwise");
-                sideUp = rotateC(sideUp);
-                break;
-            case 'D':
-                System.out.println("rotating down face clockwise");
-                sideDown = rotateC(sideDown);
-                break;
-            case 'F':
-                System.out.println("rotating front face clockwise");
-                sideFront = rotateC(sideFront);
-                break;
-            case 'B':
-                System.out.println("rotating back face clockwise");
-                sideBack = rotateC(sideBack);
-                break;
-        }
-
+        System.out.println("rotating front face clockwise");
+        sideFront = rotateC(sideFront);
 
 
         // Part 2/2 : swap the 4 sets of 3 pieces "around" this side/face:
 
         //the 4 sides whose 3 pieces will swap
-        char[][] side1ToSwap = new char[3][3];
-        char[][] side2ToSwap = new char[3][3];
-        char[][] side3ToSwap = new char[3][3];
-        char[][] side4ToSwap = new char[3][3];
+        char[][] side1ToSwap;
+        char[][] side2ToSwap;
+        char[][] side3ToSwap;
+        char[][] side4ToSwap;
         // determine position of swap
         // direction = right (clockwise)
-        switch(layer)
-        {
-            case 'R':
-                side1ToSwap = copy(sideUp);
-                side2ToSwap = copy(sideBack);
-                side3ToSwap = copy(sideDown);
-                side4ToSwap = copy(sideFront);
-                break;
-            case 'L':
-                side1ToSwap = copy(sideUp);
-                side2ToSwap = copy(sideFront);
-                side3ToSwap = copy(sideDown);
-                side4ToSwap = copy(sideBack);
-                break;
-            case 'U':
-                side1ToSwap = copy(sideBack);
-                side2ToSwap = copy(sideRight);
-                side3ToSwap = copy(sideFront);
-                side4ToSwap = copy(sideLeft);
-                break;
-            case 'D':
-                side1ToSwap = copy(sideFront);
-                side2ToSwap = copy(sideRight);
-                side3ToSwap = copy(sideBack);
-                side4ToSwap = copy(sideLeft);
-                break;
-            case 'F':
-                side1ToSwap = copy(sideUp);
-                side2ToSwap = copy(sideRight);
-                side3ToSwap = copy(sideDown);
-                side4ToSwap = copy(sideLeft);
-                break;
-            case 'B':
-                side1ToSwap = copy(sideUp);
-                side2ToSwap = copy(sideLeft);
-                side3ToSwap = copy(sideDown);
-                side4ToSwap = copy(sideRight);
-                break;
-        }
+        side1ToSwap = copy(sideUp);
+        side2ToSwap = copy(sideRight);
+        side3ToSwap = copy(sideDown);
+        side4ToSwap = copy(sideLeft);
+
         // swap
         char[][] newSide1State = copy(side1ToSwap);
         newSide1State[2][0] = side4ToSwap[0][2];
@@ -128,46 +64,12 @@ public class Cube {
         newSide4State[0][2] = side3ToSwap[0][0];
         newSide4State[1][2] = side3ToSwap[0][1];
         newSide4State[2][2] = side3ToSwap[0][2];
+
         // assign the new states to the appropriate sides
-        switch(layer)
-        {
-            case 'R':
-                sideUp = copy(newSide1State);
-                sideBack = copy(newSide2State);
-                sideDown = copy(newSide3State);
-                sideFront = copy(newSide4State);
-                break;
-            case 'L':
-                sideUp = copy(newSide1State);
-                sideFront = copy(newSide2State);
-                sideDown = copy(newSide3State);
-                sideBack = copy(newSide4State);
-                break;
-            case 'U':
-                sideBack = copy(newSide1State);
-                sideRight = copy(newSide2State);
-                sideFront = copy(newSide3State);
-                sideLeft = copy(newSide4State);
-                break;
-            case 'D':
-                sideFront = copy(newSide1State);
-                sideRight = copy(newSide2State);
-                sideBack = copy(newSide3State);
-                sideLeft = copy(newSide4State);
-                break;
-            case 'F':
-                sideUp = copy(newSide1State);
-                sideRight = copy(newSide2State);
-                sideDown = copy(newSide3State);
-                sideLeft = copy(newSide4State);
-                break;
-            case 'B':
-                sideUp = copy(newSide1State);
-                sideLeft = copy(newSide2State);
-                sideDown = copy(newSide3State);
-                sideRight = copy(newSide4State);
-                break;
-        }
+        sideUp = copy(newSide1State);
+        sideRight = copy(newSide2State);
+        sideDown = copy(newSide3State);
+        sideLeft = copy(newSide4State);
     }
 
 
@@ -273,7 +175,7 @@ public class Cube {
 
 
     private void rotateFrontLayer(char direction) {
-        rotateLayer('F', direction);
+        rotateFrontFacingLayer(direction);
     }
     private void rotateBackLayer(char direction) {
         rotateCubeX();
