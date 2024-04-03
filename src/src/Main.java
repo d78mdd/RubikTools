@@ -1,3 +1,6 @@
+package src;
+
+import src.Cube;
 
 public class Main {
 
@@ -15,7 +18,19 @@ public class Main {
         cube1.printCube();
         System.out.println();
 
-        cube1.R();
+//        cube1.U();
+//        cube1.L();
+//        cube1.F();
+//        cube1.R();
+        cube1.B();
+//        cube1.D();
+
+//        cube1.Ui();
+//        cube1.Li();
+//        cube1.Fi();
+//        cube1.Ri();
+//        cube1.Bi();
+//        cube1.Di();
 
         cube1.printCube();
 
