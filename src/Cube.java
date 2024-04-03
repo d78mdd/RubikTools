@@ -23,55 +23,26 @@ public class Cube {
 
 
     /**
-     * rotate the front 3x3x1 layer clockwise 90 degree
-     */
-    private void rotateFrontFacingLayer() {
-
-        // part 1/2:
-        System.out.println("rotating front face clockwise");
-
-        sideFront = rotateC(sideFront);
-
-
-        // Part 2/2:
-        System.out.println("rotating the 3 pieces 'around' the front face");
-
-        char[][] tempSide = copy(sideUp);
-
-        sideUp[2][0] = sideLeft[0][2];
-        sideUp[2][1] = sideLeft[1][2];
-        sideUp[2][2] = sideLeft[2][2];
-
-        sideLeft[0][2] = sideDown[0][0];
-        sideLeft[1][2] = sideDown[0][1];
-        sideLeft[2][2] = sideDown[0][2];
-
-        sideDown[0][0] = sideRight[0][0];
-        sideDown[0][1] = sideRight[1][0];
-        sideDown[0][2] = sideRight[2][0];
-
-        sideRight[0][0] = tempSide[2][0];
-        sideRight[1][0] = tempSide[2][1];
-        sideRight[2][0] = tempSide[2][2];
-    }
-
-
-    /**
-     * rotate the entire cube on the X axis
+     * rotate the entire cube on the X axis 90 degree
      */
     public void rotateCubeX() {
         rotateCube('x');
     }
 
     /**
-     * rotate the entire cube on the Y axis
+     * rotate the entire cube on the Y axis 90 degree
      */
     public void rotateCubeY() {
         rotateCube('y');
     }
 
 
-    // https://ruwix.com/the-rubiks-cube/notation/
+
+    /**
+     * rotate the entire 3x3 cube clockwise 90 degree
+     * // https://ruwix.com/the-rubiks-cube/notation/
+     * @param axis x or y
+     */
     private void rotateCube(char axis) {
 
         char[][] tempSide;
@@ -140,46 +111,84 @@ public class Cube {
 
 
 
-    private void rotateUpperLayer(char direction) {
+    private void rotateUpperLayerC() {
         rotateCubeX();
         rotateCubeX();
         rotateCubeX();
-        rotateFrontLayer(direction);
-        rotateCubeX();
-    }
-    private void rotateBottomLayer(char direction) {
-        rotateCubeX();
-        rotateFrontLayer(direction);
-        rotateCubeX();
-        rotateCubeX();
+        rotateFrontLayerC();
         rotateCubeX();
     }
-
-
-
-    private void rotateFrontLayer(char direction) {
-        rotateFrontFacingLayer();
-    }
-    private void rotateBackLayer(char direction) {
+    private void rotateBottomLayerC() {
         rotateCubeX();
+        rotateFrontLayerC();
         rotateCubeX();
-        rotateFrontLayer(direction);
         rotateCubeX();
         rotateCubeX();
     }
 
 
+    /**
+     * rotate the front 3x3x1 layer clockwise 90 degree
+     */
+    private void rotateFrontLayerC() {
 
-    private void rotateLeftLayer(char direction) {
+        // part 1/2:
+        System.out.println("rotating 9 front face pieces clockwise");
+
+        sideFront = rotateC(sideFront);
+
+
+        // Part 2/2:
+        System.out.println("rotating the 4x3 pieces 'around' the front face");
+
+        char[][] tempSide = copy(sideUp);
+
+        sideUp[2][0] = sideLeft[0][2];
+        sideUp[2][1] = sideLeft[1][2];
+        sideUp[2][2] = sideLeft[2][2];
+
+        sideLeft[0][2] = sideDown[0][0];
+        sideLeft[1][2] = sideDown[0][1];
+        sideLeft[2][2] = sideDown[0][2];
+
+        sideDown[0][0] = sideRight[0][0];
+        sideDown[0][1] = sideRight[1][0];
+        sideDown[0][2] = sideRight[2][0];
+
+        sideRight[0][0] = tempSide[2][0];
+        sideRight[1][0] = tempSide[2][1];
+        sideRight[2][0] = tempSide[2][2];
+    }
+
+    /**
+     * rotate the front 3x3x1 layer anti-clockwise 90 degree
+     */
+    private void rotateFrontLayerAC() {
+        rotateFrontLayerC();
+        rotateFrontLayerC();
+        rotateFrontLayerC();
+    }
+
+    private void rotateBackLayerC() {
+        rotateCubeX();
+        rotateCubeX();
+        rotateFrontLayerC();
+        rotateCubeX();
+        rotateCubeX();
+    }
+
+
+
+    private void rotateLeftLayerC() {
         rotateCubeY();
         rotateCubeY();
         rotateCubeY();
-        rotateFrontLayer(direction);
+        rotateFrontLayerC();
         rotateCubeY();
     }
-    private void rotateRightLayer(char direction) {
+    private void rotateRightLayerC() {
         rotateCubeY();
-        rotateFrontLayer(direction);
+        rotateFrontLayerC();
         rotateCubeY();
         rotateCubeY();
         rotateCubeY();
@@ -190,63 +199,63 @@ public class Cube {
     // according to https://rubik.bg/bg/content/10-formuli-za-podrezhdane-na-rubik-kub
     public void R()
     {
-        rotateRightLayer('r');
+        rotateRightLayerC();
     }
     public void Ri()
     {
-        rotateRightLayer('r');
-        rotateRightLayer('r');
-        rotateRightLayer('r');
+        rotateRightLayerC();
+        rotateRightLayerC();
+        rotateRightLayerC();
     }
     public void L()
     {
-        rotateLeftLayer('r');
+        rotateLeftLayerC();
     }
     public void Li()
     {
-        rotateLeftLayer('r');
-        rotateLeftLayer('r');
-        rotateLeftLayer('r');
+        rotateLeftLayerC();
+        rotateLeftLayerC();
+        rotateLeftLayerC();
     }
     public void B()
     {
-        rotateBackLayer('r');
+        rotateBackLayerC();
     }
     public void Bi()
     {
-        rotateBackLayer('r');
-        rotateBackLayer('r');
-        rotateBackLayer('r');
+        rotateBackLayerC();
+        rotateBackLayerC();
+        rotateBackLayerC();
     }
     public void D()
     {
-        rotateBottomLayer('r');
+        rotateBottomLayerC();
     }
     public void Di()
     {
-        rotateBottomLayer('r');
-        rotateBottomLayer('r');
-        rotateBottomLayer('r');
+        rotateBottomLayerC();
+        rotateBottomLayerC();
+        rotateBottomLayerC();
     }
     public void F()
     {
-        rotateFrontLayer('r');
+        rotateFrontLayerC();
     }
     public void Fi()
     {
-        rotateFrontLayer('r');
-        rotateFrontLayer('r');
-        rotateFrontLayer('r');
+        rotateFrontLayerC();
+        rotateFrontLayerC();
+        rotateFrontLayerC();
     }
     public void U()
     {
-        rotateUpperLayer('r');
+        rotateUpperLayerC();
     }
     public void Ui()
     {
-        rotateUpperLayer('r');
-        rotateUpperLayer('r');
-        rotateUpperLayer('r');
+        rotateUpperLayerC();
+        rotateUpperLayerC();
+        rotateUpperLayerC();
     }
 
 
