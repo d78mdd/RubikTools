@@ -36,29 +36,23 @@ public class Cube {
         // Part 2/2:
         System.out.println("rotating the 3 pieces 'around' the front face");
 
-        // swap
-        char[][] newSideUp = copy(sideUp);
-        newSideUp[2][0] = sideLeft[0][2];
-        newSideUp[2][1] = sideLeft[1][2];
-        newSideUp[2][2] = sideLeft[2][2];
-        char[][] newSideRight = copy(sideRight);
-        newSideRight[0][0] = sideUp[2][0];
-        newSideRight[1][0] = sideUp[2][1];
-        newSideRight[2][0] = sideUp[2][2];
-        char[][] newSideDown = copy(sideDown);
-        newSideDown[0][0] = sideRight[0][0];
-        newSideDown[0][1] = sideRight[1][0];
-        newSideDown[0][2] = sideRight[2][0];
-        char[][] newSideLeft = copy(sideLeft);
-        newSideLeft[0][2] = sideDown[0][0];
-        newSideLeft[1][2] = sideDown[0][1];
-        newSideLeft[2][2] = sideDown[0][2];
+        char[][] tempSide = copy(sideUp);
 
-        // assign the new states to the appropriate sides
-        sideUp = copy(newSideUp);
-        sideRight = copy(newSideRight);
-        sideDown = copy(newSideDown);
-        sideLeft = copy(newSideLeft);
+        sideUp[2][0] = sideLeft[0][2];
+        sideUp[2][1] = sideLeft[1][2];
+        sideUp[2][2] = sideLeft[2][2];
+
+        sideLeft[0][2] = sideDown[0][0];
+        sideLeft[1][2] = sideDown[0][1];
+        sideLeft[2][2] = sideDown[0][2];
+
+        sideDown[0][0] = sideRight[0][0];
+        sideDown[0][1] = sideRight[1][0];
+        sideDown[0][2] = sideRight[2][0];
+
+        sideRight[0][0] = tempSide[2][0];
+        sideRight[1][0] = tempSide[2][1];
+        sideRight[2][0] = tempSide[2][2];
     }
 
 
