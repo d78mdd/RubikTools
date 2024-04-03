@@ -62,7 +62,7 @@ public class Cube {
                 tempSide = sideFront;
                 sideFront = sideRight;
                 sideRight = sideBack;
-                sideBack = sideLeft;
+                sideBack = mirror(sideLeft);
                 sideLeft = tempSide;
 
                 sideUp = rotateC(sideUp);
@@ -316,7 +316,7 @@ public class Cube {
         System.out.println();
 
         // print back side
-        for (int i = 2; i >= 0; i--) {
+        for (int i = 0; i < 3; i++) {
             System.out.print("        ");
             System.out.println(sideBack[i][0] + " " + sideBack[i][1] + " " + sideBack[i][2]);
         }
