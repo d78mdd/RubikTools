@@ -36,27 +36,27 @@ public class Cube {
         switch(layer)
         {
             case 'R':
-                System.out.println("rotating right layer");
+                System.out.println("rotating right face clockwise");
                 sideRight = rotateC(sideRight);
                 break;
             case 'L':
-                System.out.println("rotating left layer");
+                System.out.println("rotating left face clockwise");
                 sideLeft = rotateC(sideLeft);
                 break;
             case 'U':
-                System.out.println("rotating up layer");
+                System.out.println("rotating up face clockwise");
                 sideUp = rotateC(sideUp);
                 break;
             case 'D':
-                System.out.println("rotating down layer");
+                System.out.println("rotating down face clockwise");
                 sideDown = rotateC(sideDown);
                 break;
             case 'F':
-                System.out.println("rotating front layer");
+                System.out.println("rotating front face clockwise");
                 sideFront = rotateC(sideFront);
                 break;
             case 'B':
-                System.out.println("rotating back layer");
+                System.out.println("rotating back face clockwise");
                 sideBack = rotateC(sideBack);
                 break;
         }
@@ -256,10 +256,18 @@ public class Cube {
 
 
     private void rotateUpperLayer(char direction) {
-        rotateLayer('U', direction);
+        rotateCubeX();
+        rotateCubeX();
+        rotateCubeX();
+        rotateFrontLayer(direction);
+        rotateCubeX();
     }
     private void rotateBottomLayer(char direction) {
-        rotateLayer('D', direction);
+        rotateCubeX();
+        rotateFrontLayer(direction);
+        rotateCubeX();
+        rotateCubeX();
+        rotateCubeX();
     }
 
 
@@ -268,16 +276,28 @@ public class Cube {
         rotateLayer('F', direction);
     }
     private void rotateBackLayer(char direction) {
-        rotateLayer('B', direction);
+        rotateCubeX();
+        rotateCubeX();
+        rotateFrontLayer(direction);
+        rotateCubeX();
+        rotateCubeX();
     }
 
 
 
     private void rotateLeftLayer(char direction) {
-        rotateLayer('L', direction);
+        rotateCubeY();
+        rotateCubeY();
+        rotateCubeY();
+        rotateFrontLayer(direction);
+        rotateCubeY();
     }
     private void rotateRightLayer(char direction) {
-        rotateLayer('R', direction);
+        rotateCubeY();
+        rotateFrontLayer(direction);
+        rotateCubeY();
+        rotateCubeY();
+        rotateCubeY();
     }
 
 
