@@ -25,14 +25,14 @@ public class Cube {
     /**
      * rotate the entire cube on the X axis 90 degree
      */
-    public void rotateCubeX() {
+    private void rotateCubeX() {
         rotateCube('x');
     }
 
     /**
      * rotate the entire cube on the Y axis 90 degree
      */
-    public void rotateCubeY() {
+    private void rotateCubeY() {
         rotateCube('y');
     }
 
@@ -61,7 +61,7 @@ public class Cube {
             case 'y':
                 tempSide = sideFront;
                 sideFront = sideRight;
-                sideRight = sideBack;
+                sideRight = mirror(sideBack);
                 sideBack = mirror(sideLeft);
                 sideLeft = tempSide;
 
