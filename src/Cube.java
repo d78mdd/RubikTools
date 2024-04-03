@@ -22,8 +22,11 @@ public class Cube {
     }
 
 
-
-
+    /**
+     * rotate a physical outer 3x3x1 layer clockwise
+     * @param layer f b r l u d
+     * @param direction not implemented yet; direction is always 90 degree clockwise
+     */
     private void rotateLayer(char layer, char direction) {
 
         // part 1/2 - rotate the face/side
@@ -39,23 +42,23 @@ public class Cube {
                 sideToRotate = copy(sideRight);
                 break;
             case 'L':
-                System.out.println("rotating right layer");
+                System.out.println("rotating left layer");
                 sideToRotate = copy(sideLeft);
                 break;
             case 'U':
-                System.out.println("rotating right layer");
+                System.out.println("rotating up layer");
                 sideToRotate = copy(sideUp);
                 break;
             case 'D':
-                System.out.println("rotating right layer");
+                System.out.println("rotating down layer");
                 sideToRotate = copy(sideDown);
                 break;
             case 'F':
-                System.out.println("rotating right layer");
+                System.out.println("rotating front layer");
                 sideToRotate = copy(sideFront);
                 break;
             case 'B':
-                System.out.println("rotating right layer");
+                System.out.println("rotating back layer");
                 sideToRotate = copy(sideBack);
                 break;
         }
@@ -204,9 +207,85 @@ public class Cube {
     }
 
 
+    /**
+     * rotate the entire cube on the X axis
+     */
+    public void rotateCubeX() {
+        rotateCube('x');
+    }
+
+    /**
+     * rotate the entire cube on the Y axis
+     */
+    public void rotateCubeY() {
+        rotateCube('y');
+    }
 
 
-    public void rotateCube(char axis) {
+    // https://ruwix.com/the-rubiks-cube/notation/
+    private void rotateCube(char axis) {
+
+        char[][] tempSide = new char[3][3];
+
+        switch (axis)
+        {
+            case 'x':
+                tempSide = sideFront;
+                sideFront = sideDown;
+                sideDown = sideBack;
+                sideBack = sideUp;
+                sideUp = tempSide;
+                sideRight = rotateC(sideRight); //  identical to :  private void rotateLayer(char layer, char direction) { // part 1/2 - rotate the face/side
+                sideLeft = rotateAC(sideLeft);
+                break;
+            case 'y':
+                tempSide = sideFront;
+                sideFront = sideRight;
+                sideRight = sideBack;
+                sideBack = sideLeft;
+                sideLeft = tempSide;
+
+                sideUp = rotateC(sideUp);
+                sideDown = rotateAC(sideDown);
+                break;
+            case 'z':
+
+                break;
+        }
+    }
+
+
+    /**
+     * for internal use with method for rotating a physical 3x3x1 layer's 4 sets of 3 "attached" pieces or method for rotating the entire cube in 3D space
+     * analogous to re-sticking a face's 9 stickers
+     * @param side the face/side (9 pieces) to be rotated
+     * @return the rotated face/side - clockwise 90 degree
+     */
+    private char[][] rotateC(char[][] side) {
+        return new char[][]{
+                {side[2][0], side[1][0], side[0][0]},
+                {side[2][1], side[1][1], side[0][1]},
+                {side[2][2], side[1][2], side[0][2]}
+        };
+    }
+
+    /**
+     * for internal use with method for rotating a physical 3x3x1 layer's 4 sets of 3 "attached" pieces or method for rotating the entire cube in 3D space
+     * analogous to re-sticking a face's 9 stickers
+     * @param side the face/side (9 pieces) to be rotated
+     * @return the rotated face/side - anti-clockwise 90 degree
+     */
+    private char[][] rotateAC(char[][] side) {
+        return rotateC(rotateC(rotateC(side)));
+    }
+
+    /**
+     * for internal use with rotating the cube in 3D or rotating a 3x3x1 outer layer
+     * @param side the face/side (9 pieces) to be rotated
+     * @return the rotated face/side 180 degree
+     */
+    private char[][] mirror(char[][] side) {
+        return rotateC(rotateC(side));
     }
 
 
@@ -303,17 +382,6 @@ public class Cube {
 
 
 
-
-
-    public void rotateCubeX() {
-        rotateCube('x');
-    }
-    public void rotateCubeY() {
-        rotateCube('y');
-    }
-    public void rotateCubeZ() {
-        rotateCube('z');
-    }
 
 
 
@@ -444,10 +512,13 @@ public class Cube {
     }
 
 
-
-
-    private static char[][] copy(char[][] arr) {
-        return Arrays.stream(arr).map(char[]::clone).toArray(char[][]::new);
+    /**
+     * get a reference to a new char[][] array
+     * @param side the source array (cube side/face 3x3)
+     * @return the new array
+     */
+    private static char[][] copy(char[][] side) {
+        return Arrays.stream(side).map(char[]::clone).toArray(char[][]::new);
     }
 
 
