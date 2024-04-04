@@ -54,6 +54,24 @@ public class Cube {
         rotateCube('y');
     }
 
+    /**
+     * rotate the entire cube on the Z axis 90 degree clockwise
+     */
+    private void rotateCubeZC() {
+        rotateCubeXC();
+        rotateCubeYC();
+        rotateCubeXAC();
+    }
+
+    /**
+     * rotate the entire cube on the Z axis 90 degree anti-clockwise
+     */
+    private void rotateCubeZAC() {
+        rotateCubeXC();
+        rotateCubeYAC();
+        rotateCubeXAC();
+    }
+
 
     /**
      * rotate the entire 3x3 cube clockwise 90 degree
@@ -224,6 +242,19 @@ public class Cube {
         rotateRightLayerC();
     }
 
+    private void rotateBottomLayerAC() {
+        rotateBottomLayerC();
+        rotateBottomLayerC();
+        rotateBottomLayerC();
+    }
+
+    private void rotateUpperLayerAC() {
+        rotateUpperLayerC();
+        rotateUpperLayerC();
+        rotateUpperLayerC();
+    }
+
+
 
 
     // shortened method names for each movement
@@ -298,10 +329,18 @@ public class Cube {
     }
 
 
-
     public void E() {
-
+        rotateCubeYAC();
+        rotateUpperLayerC();
+        rotateBottomLayerAC();
     }
+
+    public void Ei() {
+        rotateCubeYC();
+        rotateUpperLayerAC();
+        rotateBottomLayerC();
+    }
+
 
     public void S() {
 
