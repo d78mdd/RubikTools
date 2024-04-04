@@ -261,8 +261,6 @@ public class Cube {
     }
 
 
-
-
     // shortened method names for each movement
     // according to https://rubik.bg/bg/content/10-formuli-za-podrezhdane-na-rubik-kub
     public void R() {
@@ -359,7 +357,6 @@ public class Cube {
         rotateFrontLayerC();
         rotateBackLayerAC();
     }
-
 
 
     public void showSide(String side) {
