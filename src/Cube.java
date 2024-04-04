@@ -179,17 +179,17 @@ public class Cube {
 
         char[][] tempSide = copy(sideUp);
 
-        sideUp[2][0] = sideLeft[0][2];
+        sideUp[2][0] = sideLeft[2][2];
         sideUp[2][1] = sideLeft[1][2];
-        sideUp[2][2] = sideLeft[2][2];
+        sideUp[2][2] = sideLeft[0][2];
 
         sideLeft[0][2] = sideDown[0][0];
         sideLeft[1][2] = sideDown[0][1];
         sideLeft[2][2] = sideDown[0][2];
 
-        sideDown[0][0] = sideRight[0][0];
+        sideDown[0][0] = sideRight[2][0];
         sideDown[0][1] = sideRight[1][0];
-        sideDown[0][2] = sideRight[2][0];
+        sideDown[0][2] = sideRight[0][0];
 
         sideRight[0][0] = tempSide[2][0];
         sideRight[1][0] = tempSide[2][1];
