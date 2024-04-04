@@ -1,5 +1,8 @@
 import java.util.Arrays;
 
+/**
+ * used notations: https://rubik.bg/bg/content/10-formuli-za-podrezhdane-na-rubik-kub
+ */
 public class Cube {
 
     // sides (faces) with 9 pieces each
@@ -146,6 +149,9 @@ public class Cube {
     }
 
 
+    /**
+     * rotate Up layer clockwise 90 degree
+     */
     private void rotateUpperLayerC() {
         rotateCubeXC();
         rotateCubeXC();
@@ -154,6 +160,9 @@ public class Cube {
         rotateCubeXC();
     }
 
+    /**
+     * rotate Down layer clockwise 90 degree
+     */
     private void rotateBottomLayerC() {
         rotateCubeXC();
         rotateFrontLayerC();
@@ -205,6 +214,9 @@ public class Cube {
         rotateFrontLayerC();
     }
 
+    /**
+     * rotate Back layer clockwise 90 degree
+     */
     private void rotateBackLayerC() {
         rotateCubeXC();
         rotateCubeXC();
@@ -214,6 +226,9 @@ public class Cube {
     }
 
 
+    /**
+     * rotate Left layer clockwise 90 degree
+     */
     private void rotateLeftLayerC() {
         rotateCubeYC();
         rotateCubeYC();
@@ -222,6 +237,9 @@ public class Cube {
         rotateCubeYC();
     }
 
+    /**
+     * rotate Right layer clockwise 90 degree
+     */
     private void rotateRightLayerC() {
         rotateCubeYC();
         rotateFrontLayerC();
@@ -230,30 +248,45 @@ public class Cube {
         rotateCubeYC();
     }
 
+    /**
+     * rotate Left layer anti-clockwise 90 degree
+     */
     private void rotateLeftLayerAC() {
         rotateLeftLayerC();
         rotateLeftLayerC();
         rotateLeftLayerC();
     }
 
+    /**
+     * rotate Right layer anti-clockwise 90 degree
+     */
     private void rotateRightLayerAC() {
         rotateRightLayerC();
         rotateRightLayerC();
         rotateRightLayerC();
     }
 
+    /**
+     * rotate Down layer anti-clockwise 90 degree
+     */
     private void rotateBottomLayerAC() {
         rotateBottomLayerC();
         rotateBottomLayerC();
         rotateBottomLayerC();
     }
 
+    /**
+     * rotate Up layer anti-clockwise 90 degree
+     */
     private void rotateUpperLayerAC() {
         rotateUpperLayerC();
         rotateUpperLayerC();
         rotateUpperLayerC();
     }
 
+    /**
+     * rotate Back layer anti-clockwise 90 degree
+     */
     private void rotateBackLayerAC() {
         rotateBackLayerC();
         rotateBackLayerC();
@@ -261,58 +294,94 @@ public class Cube {
     }
 
 
-    // shortened method names for each movement
-    // according to https://rubik.bg/bg/content/10-formuli-za-podrezhdane-na-rubik-kub
+
+
+    /**
+     * rotate Right layer clockwise 90 degree
+     */
     public void R() {
         rotateRightLayerC();
     }
 
+    /**
+     * rotate Right layer anti-clockwise 90 degree
+     */
     public void Ri() {
         rotateRightLayerC();
         rotateRightLayerC();
         rotateRightLayerC();
     }
 
+    /**
+     * rotate Left layer clockwise 90 degree
+     */
     public void L() {
         rotateLeftLayerC();
     }
 
+    /**
+     * rotate Left layer antu-clockwise 90 degree
+     */
     public void Li() {
         rotateLeftLayerAC();
     }
 
+    /**
+     * rotate Back layer clockwise 90 degree
+     */
     public void B() {
         rotateBackLayerC();
     }
 
+    /**
+     * rotate Back layer anti-clockwise 90 degree
+     */
     public void Bi() {
         rotateBackLayerC();
         rotateBackLayerC();
         rotateBackLayerC();
     }
 
+    /**
+     * rotate Down layer clockwise 90 degree
+     */
     public void D() {
         rotateBottomLayerC();
     }
 
+    /**
+     * rotate Down layer anti-clockwise 90 degree
+     */
     public void Di() {
         rotateBottomLayerC();
         rotateBottomLayerC();
         rotateBottomLayerC();
     }
 
+    /**
+     * rotate Front layer clockwise 90 degree
+     */
     public void F() {
         rotateFrontLayerC();
     }
 
+    /**
+     * rotate Front layer anti-clockwise 90 degree
+     */
     public void Fi() {
         rotateFrontLayerAC();
     }
 
+    /**
+     * rotate Up later clockwise 90 degree
+     */
     public void U() {
         rotateUpperLayerC();
     }
 
+    /**
+     * rotate Up layer anti-clockwise 90 degree
+     */
     public void Ui() {
         rotateUpperLayerC();
         rotateUpperLayerC();
@@ -320,12 +389,18 @@ public class Cube {
     }
 
 
+    /**
+     * rotate middle X-axis layer/slice up 90 degree
+     */
     public void Mi() {
         rotateCubeXC();
         rotateRightLayerAC();
         rotateLeftLayerC();
     }
 
+    /**
+     * rotate middle X-axis layer/slice down 90 degree
+     */
     public void M() {
         rotateCubeXAC();
         rotateRightLayerC();
@@ -333,12 +408,18 @@ public class Cube {
     }
 
 
+    /**
+     * rotate middle Y-axis layer/slice right 90 degree
+     */
     public void E() {
         rotateCubeYAC();
         rotateUpperLayerC();
         rotateBottomLayerAC();
     }
 
+    /**
+     * rotate middle Y-axis layer/slice left 90 degree
+     */
     public void Ei() {
         rotateCubeYC();
         rotateUpperLayerAC();
@@ -346,12 +427,18 @@ public class Cube {
     }
 
 
+    /**
+     * rotate middle Z-axis layer/slice clockwise 90 degree
+     */
     public void S() {
         rotateCubeZC();
         rotateFrontLayerAC();
         rotateBackLayerC();
     }
 
+    /**
+     * rotate middle Z-axis layer/slice anti-clockwise 90 degree
+     */
     public void Si() {
         rotateCubeZAC();
         rotateFrontLayerC();
@@ -359,6 +446,10 @@ public class Cube {
     }
 
 
+    /**
+     * print the content of the given side as a plain string
+     * @param side side to print
+     */
     public void showSide(String side) {
         switch (side) {
             case "right":
@@ -384,6 +475,24 @@ public class Cube {
     }
 
 
+    /**
+     * print the entire cube in the following format:<br>
+     *_________r r r<br>
+     *_________r r r<br>
+     *_________r r r<br>
+     * <p>
+     * y y y   b b b   w w w<br>
+     * y y y   b b b   w w w<br>
+     * y y y   b b b   w w w<br>
+     * <p>
+     *_________o o o<br>
+     *_________o o o<br>
+     *_________o o o<br>
+     * <p>
+     *_________g g g<br>
+     *_________g g g<br>
+     *_________g g g<br>
+     */
     public void printCube() {
 
         // print top side
@@ -418,36 +527,54 @@ public class Cube {
         }
     }
 
+    /**
+     * print the front side as a 3x3 matrix
+     */
     public void printFrontSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideFront[i][0] + " " + sideFront[i][1] + " " + sideFront[i][2]);
         }
     }
 
+    /**
+     * print the back side as a 3x3 matrix
+     */
     public void printBackSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideBack[i][0] + " " + sideBack[i][1] + " " + sideBack[i][2]);
         }
     }
 
+    /**
+     * print the right side as a 3x3 matrix
+     */
     public void printRightSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideRight[i][0] + " " + sideRight[i][1] + " " + sideRight[i][2]);
         }
     }
 
+    /**
+     * print the left side as a 3x3 matrix
+     */
     public void printLeftSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideLeft[i][0] + " " + sideLeft[i][1] + " " + sideLeft[i][2]);
         }
     }
 
+    /**
+     * print the top side as a 3x3 matrix
+     */
     public void printTopSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideUp[i][0] + " " + sideUp[i][1] + " " + sideUp[i][2]);
         }
     }
 
+    /**
+     * print the bottom side as a 3x3 matrix
+     */
     public void printBottomSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideDown[i][0] + " " + sideDown[i][1] + " " + sideDown[i][2]);
@@ -455,6 +582,9 @@ public class Cube {
     }
 
 
+    /**
+     * print all sides as plain string
+     */
     public void showAllSides() {
         showSide("right");
         showSide("left");
