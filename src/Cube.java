@@ -23,16 +23,34 @@ public class Cube {
 
 
     /**
-     * rotate the entire cube on the X axis 90 degree
+     * rotate the entire cube on the X axis 90 degree clockwise
      */
-    private void rotateCubeX() {
+    private void rotateCubeXC() {
         rotateCube('x');
     }
 
     /**
-     * rotate the entire cube on the Y axis 90 degree
+     * rotate the entire cube on the X axis 90 degree anti-clockwise
      */
-    private void rotateCubeY() {
+    private void rotateCubeXAC() {
+        rotateCube('x');
+        rotateCube('x');
+        rotateCube('x');
+    }
+
+    /**
+     * rotate the entire cube on the Y axis 90 degree clockwise
+     */
+    private void rotateCubeYC() {
+        rotateCube('y');
+    }
+
+    /**
+     * rotate the entire cube on the Y axis 90 degree anti-clockwise
+     */
+    private void rotateCubeYAC() {
+        rotateCube('y');
+        rotateCube('y');
         rotateCube('y');
     }
 
@@ -111,19 +129,19 @@ public class Cube {
 
 
     private void rotateUpperLayerC() {
-        rotateCubeX();
-        rotateCubeX();
-        rotateCubeX();
+        rotateCubeXC();
+        rotateCubeXC();
+        rotateCubeXC();
         rotateFrontLayerC();
-        rotateCubeX();
+        rotateCubeXC();
     }
 
     private void rotateBottomLayerC() {
-        rotateCubeX();
+        rotateCubeXC();
         rotateFrontLayerC();
-        rotateCubeX();
-        rotateCubeX();
-        rotateCubeX();
+        rotateCubeXC();
+        rotateCubeXC();
+        rotateCubeXC();
     }
 
 
@@ -170,29 +188,42 @@ public class Cube {
     }
 
     private void rotateBackLayerC() {
-        rotateCubeX();
-        rotateCubeX();
+        rotateCubeXC();
+        rotateCubeXC();
         rotateFrontLayerC();
-        rotateCubeX();
-        rotateCubeX();
+        rotateCubeXC();
+        rotateCubeXC();
     }
 
 
     private void rotateLeftLayerC() {
-        rotateCubeY();
-        rotateCubeY();
-        rotateCubeY();
+        rotateCubeYC();
+        rotateCubeYC();
+        rotateCubeYC();
         rotateFrontLayerC();
-        rotateCubeY();
+        rotateCubeYC();
     }
 
     private void rotateRightLayerC() {
-        rotateCubeY();
+        rotateCubeYC();
         rotateFrontLayerC();
-        rotateCubeY();
-        rotateCubeY();
-        rotateCubeY();
+        rotateCubeYC();
+        rotateCubeYC();
+        rotateCubeYC();
     }
+
+    private void rotateLeftLayerAC() {
+        rotateLeftLayerC();
+        rotateLeftLayerC();
+        rotateLeftLayerC();
+    }
+
+    private void rotateRightLayerAC() {
+        rotateRightLayerC();
+        rotateRightLayerC();
+        rotateRightLayerC();
+    }
+
 
 
     // shortened method names for each movement
@@ -212,9 +243,7 @@ public class Cube {
     }
 
     public void Li() {
-        rotateLeftLayerC();
-        rotateLeftLayerC();
-        rotateLeftLayerC();
+        rotateLeftLayerAC();
     }
 
     public void B() {
@@ -253,6 +282,29 @@ public class Cube {
         rotateUpperLayerC();
         rotateUpperLayerC();
         rotateUpperLayerC();
+    }
+
+
+    public void Mi() {
+        rotateCubeXC();
+        rotateRightLayerAC();
+        rotateLeftLayerC();
+    }
+
+    public void M() {
+        rotateCubeXAC();
+        rotateRightLayerC();
+        rotateLeftLayerAC();
+    }
+
+
+
+    public void E() {
+
+    }
+
+    public void S() {
+
     }
 
 
