@@ -1,3 +1,5 @@
+// patterns:
+// https://ruwix.com/the-rubiks-cube/rubiks-cube-patterns-algorithms/
 
 public class Main {
 
@@ -12,24 +14,60 @@ public class Main {
 
         Cube cube1 = new Cube(side1, side2, side3, side4, side5, side6);
 
+//        cube1.printCube();
+//        System.out.println();
+
+        cube1.D();
+        cube1.rotateCubeYC();
+        cube1.rotateFrontLayerC();
         cube1.printCube();
-        System.out.println();
+        cube1.rotateCubeYC();
+        cube1.rotateCubeYC();
+        cube1.rotateCubeYC();
 
-//        cube1.U();
-//        cube1.L();
-//        cube1.F();
-//        cube1.R();
-        cube1.B();
-//        cube1.D();
+//        doPatternTheEasyCheckerBoard(cube1); ok
+//        doPatternPython(cube1); partly ok
 
-//        cube1.Ui();
-//        cube1.Li();
-//        cube1.Fi();
-//        cube1.Ri();
-//        cube1.Bi();
-//        cube1.Di();
+//        doPatternTheSuperflip(cube1);
+//        doPatternCubeInACubeInACube(cube1);
 
-        cube1.printCube();
+//        cube1.printCube();
 
+    }
+
+    private static void doPatternCubeInACubeInACube(Cube cube) {
+
+    }
+
+    private static void doPatternPython(Cube cube) {
+        cube.F();
+        cube.F();
+        cube.Ri();
+        cube.Bi();
+        cube.U();
+        cube.Ri();
+        cube.L();
+        cube.Fi();
+        cube.L();
+        cube.Fi();
+        cube.B();
+        cube.Di();
+        cube.R();
+        cube.B();
+        cube.L();
+        cube.L();
+    }
+
+    private static void doPatternTheSuperflip(Cube cube) {
+
+    }
+
+    private static void doPatternTheEasyCheckerBoard(Cube cube) {
+        cube.M();
+        cube.M();
+        cube.E();
+        cube.E();
+        cube.S();
+        cube.S();
     }
 }
