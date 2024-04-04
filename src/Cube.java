@@ -254,6 +254,12 @@ public class Cube {
         rotateUpperLayerC();
     }
 
+    private void rotateBackLayerAC() {
+        rotateBackLayerC();
+        rotateBackLayerC();
+        rotateBackLayerC();
+    }
+
 
 
 
@@ -343,8 +349,17 @@ public class Cube {
 
 
     public void S() {
-
+        rotateCubeZC();
+        rotateFrontLayerAC();
+        rotateBackLayerC();
     }
+
+    public void Si() {
+        rotateCubeZAC();
+        rotateFrontLayerC();
+        rotateBackLayerAC();
+    }
+
 
 
     public void showSide(String side) {
