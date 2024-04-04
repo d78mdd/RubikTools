@@ -18,16 +18,30 @@ public class Main {
         Cube cube4 = new Cube(side1, side2, side3, side4, side5, side6);
 
 
-        doPatternTheEasyCheckerBoard(cube1);
+        doPatternTheEasyCheckerboard(cube1);
+        System.out.println("demonstration of Pattern 'The Easy Checkerboard'");
+        System.out.println();
         cube1.printCube();
 
         doPatternPython(cube2);
+        System.out.println();
+        System.out.println();
+        System.out.println("demonstration of Pattern 'Python'");
+        System.out.println();
         cube2.printCube();
 
         doPatternTheSuperflip(cube3);
+        System.out.println();
+        System.out.println();
+        System.out.println("demonstration of Pattern 'The Superflip'");
+        System.out.println();
         cube3.printCube();
 
         doPatternCubeInACubeInACube(cube4);
+        System.out.println();
+        System.out.println();
+        System.out.println("demonstration of Pattern 'Cube In A Cube In A Cube'");
+        System.out.println();
         cube4.printCube();
     }
 
@@ -105,7 +119,7 @@ public class Main {
         cube.F();
     }
 
-    private static void doPatternTheEasyCheckerBoard(Cube cube) {
+    private static void doPatternTheEasyCheckerboard(Cube cube) {
         cube.M();
         cube.M();
         cube.E();

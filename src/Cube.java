@@ -178,13 +178,13 @@ public class Cube {
     private void rotateFrontLayerC() {
 
         // part 1/2:
-        System.out.println("rotating 9 front face pieces clockwise");
+//        System.out.println("rotating 9 front face pieces clockwise");
 
         sideFront = rotateC(sideFront);
 
 
         // Part 2/2:
-        System.out.println("rotating the 4x3 pieces 'around' the front face");
+//        System.out.println("rotating the 4x3 pieces 'around' the front face");
 
         char[][] tempSide = copy(sideUp);
 
@@ -370,6 +370,14 @@ public class Cube {
      * rotate Down layer clockwise 90 degree
      */
     public void D() {
+        rotateBottomLayerC();
+    }
+
+    /**
+     * rotate Down layer 180 degree
+     */
+    public void D2() {
+        rotateBottomLayerC();
         rotateBottomLayerC();
     }
 
