@@ -37,25 +37,24 @@ public class Cube {
     }
 
 
-
     /**
      * rotate the entire 3x3 cube clockwise 90 degree
      * // https://ruwix.com/the-rubiks-cube/notation/
+     *
      * @param axis x or y
      */
     private void rotateCube(char axis) {
 
         char[][] tempSide;
 
-        switch (axis)
-        {
+        switch (axis) {
             case 'x':
                 tempSide = sideFront;
                 sideFront = sideDown;
                 sideDown = sideBack;
                 sideBack = sideUp;
                 sideUp = tempSide;
-                sideRight = rotateC(sideRight); //  identical to :  private void rotateLayer(char layer, char direction) { // part 1/2 - rotate the face/side
+                sideRight = rotateC(sideRight);
                 sideLeft = rotateAC(sideLeft);
                 break;
             case 'y':
@@ -64,7 +63,6 @@ public class Cube {
                 sideRight = mirror(sideBack);
                 sideBack = mirror(sideLeft);
                 sideLeft = tempSide;
-
                 sideUp = rotateC(sideUp);
                 sideDown = rotateAC(sideDown);
                 break;
@@ -78,6 +76,7 @@ public class Cube {
     /**
      * for internal use with method for rotating a physical 3x3x1 layer's 4 sets of 3 "attached" pieces or method for rotating the entire cube in 3D space
      * analogous to re-sticking a face's 9 stickers
+     *
      * @param side the face/side (9 pieces) to be rotated
      * @return a new rotated face/side - clockwise 90 degree
      */
@@ -92,6 +91,7 @@ public class Cube {
     /**
      * for internal use with method for rotating a physical 3x3x1 layer's 4 sets of 3 "attached" pieces or method for rotating the entire cube in 3D space
      * analogous to re-sticking a face's 9 stickers
+     *
      * @param side the face/side (9 pieces) to be rotated
      * @return a new rotated face/side - anti-clockwise 90 degree
      */
@@ -101,14 +101,13 @@ public class Cube {
 
     /**
      * for internal use with rotating the cube in 3D or rotating a 3x3x1 outer layer
+     *
      * @param side the face/side (9 pieces) to be rotated
      * @return a new rotated face/side 180 degree
      */
     private char[][] mirror(char[][] side) {
         return rotateC(rotateC(side));
     }
-
-
 
 
     private void rotateUpperLayerC() {
@@ -118,6 +117,7 @@ public class Cube {
         rotateFrontLayerC();
         rotateCubeX();
     }
+
     private void rotateBottomLayerC() {
         rotateCubeX();
         rotateFrontLayerC();
@@ -178,7 +178,6 @@ public class Cube {
     }
 
 
-
     private void rotateLeftLayerC() {
         rotateCubeY();
         rotateCubeY();
@@ -186,6 +185,7 @@ public class Cube {
         rotateFrontLayerC();
         rotateCubeY();
     }
+
     private void rotateRightLayerC() {
         rotateCubeY();
         rotateFrontLayerC();
@@ -197,70 +197,63 @@ public class Cube {
 
     // shortened method names for each movement
     // according to https://rubik.bg/bg/content/10-formuli-za-podrezhdane-na-rubik-kub
-    public void R()
-    {
+    public void R() {
         rotateRightLayerC();
     }
-    public void Ri()
-    {
+
+    public void Ri() {
         rotateRightLayerC();
         rotateRightLayerC();
         rotateRightLayerC();
     }
-    public void L()
-    {
+
+    public void L() {
         rotateLeftLayerC();
     }
-    public void Li()
-    {
+
+    public void Li() {
         rotateLeftLayerC();
         rotateLeftLayerC();
         rotateLeftLayerC();
     }
-    public void B()
-    {
+
+    public void B() {
         rotateBackLayerC();
     }
-    public void Bi()
-    {
+
+    public void Bi() {
         rotateBackLayerC();
         rotateBackLayerC();
         rotateBackLayerC();
     }
-    public void D()
-    {
+
+    public void D() {
         rotateBottomLayerC();
     }
-    public void Di()
-    {
+
+    public void Di() {
         rotateBottomLayerC();
         rotateBottomLayerC();
         rotateBottomLayerC();
     }
-    public void F()
-    {
+
+    public void F() {
         rotateFrontLayerC();
     }
-    public void Fi()
-    {
-        rotateFrontLayerC();
-        rotateFrontLayerC();
-        rotateFrontLayerC();
+
+    public void Fi() {
+        rotateFrontLayerAC();
     }
-    public void U()
-    {
+
+    public void U() {
         rotateUpperLayerC();
     }
-    public void Ui()
-    {
+
+    public void Ui() {
         rotateUpperLayerC();
         rotateUpperLayerC();
         rotateUpperLayerC();
     }
-
-
-
-
 
 
     public void showSide(String side) {
@@ -322,38 +315,37 @@ public class Cube {
         }
     }
 
-    public void printFrontSide()
-    {
+    public void printFrontSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideFront[i][0] + " " + sideFront[i][1] + " " + sideFront[i][2]);
         }
     }
-    public void printBackSide()
-    {
+
+    public void printBackSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideBack[i][0] + " " + sideBack[i][1] + " " + sideBack[i][2]);
         }
     }
-    public void printRightSide()
-    {
+
+    public void printRightSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideRight[i][0] + " " + sideRight[i][1] + " " + sideRight[i][2]);
         }
     }
-    public void printLeftSide()
-    {
+
+    public void printLeftSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideLeft[i][0] + " " + sideLeft[i][1] + " " + sideLeft[i][2]);
         }
     }
-    public void printTopSide()
-    {
+
+    public void printTopSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideUp[i][0] + " " + sideUp[i][1] + " " + sideUp[i][2]);
         }
     }
-    public void printBottomSide()
-    {
+
+    public void printBottomSide() {
         for (int i = 0; i < 3; i++) {
             System.out.println(sideDown[i][0] + " " + sideDown[i][1] + " " + sideDown[i][2]);
         }
@@ -368,7 +360,6 @@ public class Cube {
         showSide("front");
         showSide("back");
     }
-
 
 
     public void solveLayer1() {
@@ -392,6 +383,7 @@ public class Cube {
 
     /**
      * get a reference to a new char[][] array
+     *
      * @param side the source array (cube side/face 3x3)
      * @return the new array
      */
