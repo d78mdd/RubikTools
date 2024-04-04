@@ -304,6 +304,14 @@ public class Cube {
     }
 
     /**
+     * rotate Right layer 180 degree
+     */
+    public void R2() {
+        rotateRightLayerC();
+        rotateRightLayerC();
+    }
+
+    /**
      * rotate Right layer anti-clockwise 90 degree
      */
     public void Ri() {
@@ -320,6 +328,14 @@ public class Cube {
     }
 
     /**
+     * rotate Left layer 180 degree
+     */
+    public void L2() {
+        rotateLeftLayerC();
+        rotateLeftLayerC();
+    }
+
+    /**
      * rotate Left layer antu-clockwise 90 degree
      */
     public void Li() {
@@ -330,6 +346,14 @@ public class Cube {
      * rotate Back layer clockwise 90 degree
      */
     public void B() {
+        rotateBackLayerC();
+    }
+
+    /**
+     * rotate Back layer 180 degree
+     */
+    public void B2() {
+        rotateBackLayerC();
         rotateBackLayerC();
     }
 
@@ -366,6 +390,14 @@ public class Cube {
     }
 
     /**
+     * rotate Front layer 180 degree
+     */
+    public void F2() {
+        rotateFrontLayerC();
+        rotateFrontLayerC();
+    }
+
+    /**
      * rotate Front layer anti-clockwise 90 degree
      */
     public void Fi() {
@@ -376,6 +408,14 @@ public class Cube {
      * rotate Up later clockwise 90 degree
      */
     public void U() {
+        rotateUpperLayerC();
+    }
+
+    /**
+     * rotate Up later 180 degree
+     */
+    public void U2() {
+        rotateUpperLayerC();
         rotateUpperLayerC();
     }
 
@@ -407,6 +447,14 @@ public class Cube {
         rotateLeftLayerAC();
     }
 
+    /**
+     * rotate middle X-axis layer/slice 180 degree
+     */
+    public void M2() {
+        M();
+        M();
+    }
+
 
     /**
      * rotate middle Y-axis layer/slice right 90 degree
@@ -415,6 +463,14 @@ public class Cube {
         rotateCubeYAC();
         rotateUpperLayerC();
         rotateBottomLayerAC();
+    }
+
+    /**
+     * rotate middle Y-axis layer/slice 180 degree
+     */
+    public void E2() {
+        E();
+        E();
     }
 
     /**
@@ -434,6 +490,14 @@ public class Cube {
         rotateCubeZC();
         rotateFrontLayerAC();
         rotateBackLayerC();
+    }
+
+    /**
+     * rotate middle Z-axis layer/slice 180 degree
+     */
+    public void S2() {
+        S();
+        S();
     }
 
     /**
