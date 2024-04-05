@@ -50,14 +50,12 @@ public class Main {
         cube.Li();
         cube.Ui();
         cube.Fi();
-        cube.R();
-        cube.R();
+        cube.R2();
         cube.Bi();
         cube.R();
         cube.F();
         cube.U();
-        cube.B();
-        cube.B();
+        cube.B2();
         cube.U();
         cube.Bi();
         cube.L();
@@ -69,8 +67,7 @@ public class Main {
     }
 
     private static void doPatternPython(Cube cube) {
-        cube.F();
-        cube.F();
+        cube.F2();
         cube.Ri();
         cube.Bi();
         cube.U();
@@ -83,48 +80,36 @@ public class Main {
         cube.Di();
         cube.R();
         cube.B();
-        cube.L();
-        cube.L();
+        cube.L2();
     }
 
     private static void doPatternTheSuperflip(Cube cube) {
 
         cube.U();
-        cube.R();
-        cube.R();
+        cube.R2();
         cube.F();
         cube.B();
         cube.R();
-        cube.B();
-        cube.B();
+        cube.B2();
         cube.R();
-        cube.U();
-        cube.U();
+        cube.U2();
         cube.L();
-        cube.B();
-        cube.B();
+        cube.B2();
         cube.R();
         cube.Ui();
         cube.Di();
-        cube.R();
-        cube.R();
+        cube.R2();
         cube.F();
         cube.Ri();
         cube.L();
-        cube.B();
-        cube.B();
-        cube.U();
-        cube.U();
-        cube.F();
-        cube.F();
+        cube.B2();
+        cube.U2();
+        cube.F2();
     }
 
     private static void doPatternTheEasyCheckerboard(Cube cube) {
-        cube.M();
-        cube.M();
-        cube.E();
-        cube.E();
-        cube.S();
-        cube.S();
+        cube.M2();
+        cube.E2();
+        cube.S2();
     }
 }
