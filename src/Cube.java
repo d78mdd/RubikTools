@@ -336,7 +336,7 @@ public class Cube {
     }
 
     /**
-     * rotate Left layer antu-clockwise 90 degree
+     * rotate Left layer anti-clockwise 90 degree
      */
     public void Li() {
         rotateLeftLayerAC();
