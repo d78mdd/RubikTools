@@ -294,8 +294,6 @@ public class Cube {
     }
 
 
-
-
     /**
      * rotate Right layer clockwise 90 degree
      */
@@ -520,6 +518,7 @@ public class Cube {
 
     /**
      * print the content of the given side as a plain string
+     *
      * @param side side to print
      */
     public void showSide(String side) {
@@ -549,21 +548,21 @@ public class Cube {
 
     /**
      * print the entire cube in the following format:<br>
-     *_________r r r<br>
-     *_________r r r<br>
-     *_________r r r<br>
+     * _________r r r<br>
+     * _________r r r<br>
+     * _________r r r<br>
      * <p>
      * y y y   b b b   w w w<br>
      * y y y   b b b   w w w<br>
      * y y y   b b b   w w w<br>
      * <p>
-     *_________o o o<br>
-     *_________o o o<br>
-     *_________o o o<br>
+     * _________o o o<br>
+     * _________o o o<br>
+     * _________o o o<br>
      * <p>
-     *_________g g g<br>
-     *_________g g g<br>
-     *_________g g g<br>
+     * _________g g g<br>
+     * _________g g g<br>
+     * _________g g g<br>
      */
     public void printCube() {
 
