@@ -667,18 +667,30 @@ public class Cube {
     }
 
 
+    /**
+     * attempt to solve the scrambled layer 1
+     */
     public void solveLayer1() {
 
     }
 
+    /**
+     * attempt to solve the scrambled layer 2
+     */
     public void solveLayer2() {
 
     }
 
+    /**
+     * attempt to solve the scrambled layer 3
+     */
     public void solveLayer3() {
 
     }
 
+    /**
+     * attempt to solve the scrambled cube using the 'beginner's method' ('Layer by Layer') (the basis for CFOP method)
+     */
     public void solve() {
         solveLayer1();
         solveLayer2();
